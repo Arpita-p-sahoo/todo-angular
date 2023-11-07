@@ -44,5 +44,5 @@ export class MainComponent implements OnInit{
   ClearAll(){
     localStorage.clear();
     this.taskList = [];
-  }
+  } 
 }
