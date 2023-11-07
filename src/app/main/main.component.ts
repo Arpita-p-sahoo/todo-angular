@@ -31,11 +31,16 @@ export class MainComponent implements OnInit{
    localStorage.setItem('tasks',JSON.stringify(this.taskList));
    task= '';
   }
-
+  /**
+   * Individually removes the task
+   * @param id 
+   */
   RemoveItem(id:number){
     this.taskList = this.taskList.filter(item => item.id!==id);
   }
-
+  /**
+   * Clears the task 
+   */
   ClearAll(){
     localStorage.clear();
     this.taskList = [];
