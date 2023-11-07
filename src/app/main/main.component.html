@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="input-group mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Add Task..." aria-label="Add Task..." #task (keyup.enter)="AddToToDo(task.value)"
+            aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="AddToToDo(task.value)">Add</button>
+        </div>
+        <div class="text-center"><button type="button" class="btn btn-danger" (click)="ClearAll()">Clear All</button></div>
+    </div>
+
+    <h2 class="text-center">Your Task Lists</h2>
+    <hr>
+
+    
+    <div class="alert alert-danger nolist" role="alert" *ngIf="taskList.length == 0">
+        No Lists Yet!
+    </div>
+    <div class="task-list" *ngIf="taskList.length>0">
+        <div class="card text-white bg-dark mb-3" *ngFor="let item of taskList">
+            <div class="card-header">{{item.Time}}</div>
+            <div class="card-body">
+                <p class="card-text">{{item.subject}}</p>
+            </div>
+            <div class="text-end"><button type="button" class="btn btn-danger" (click)="RemoveItem(item.id)">Delete</button></div>
+        </div>
+        
+    </div>
+    
+</div>
