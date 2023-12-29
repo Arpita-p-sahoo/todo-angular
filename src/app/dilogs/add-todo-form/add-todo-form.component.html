@@ -1,0 +1,22 @@
+<div class="container">
+    <form action="#" [formGroup]="AddTodoForm">
+        <div class="form-row">
+            <div class="input-data textarea">
+                <!-- <textarea rows="8" cols="80" required  [(ngModel)]="message"></textarea> -->
+                <input type="text" formControlName="title">
+                <div class="underline"></div>
+                <label for="">Add your Todo</label>
+                <br />
+            </div>
+        </div>
+       <div class="text-center">
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Imporant</mat-radio-button>
+            <mat-radio-button value="2">Work</mat-radio-button>
+            <mat-radio-button value="2">Expence</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <button class="mt-4 mb-4" mat-raised-button color="Sucsses" (click)="saveTodo()">Save</button>
+       </div>
+    </form>
+</div>

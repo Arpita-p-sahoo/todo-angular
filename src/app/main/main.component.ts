@@ -1,5 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTodoFormComponent } from '../dilogs/add-todo-form/add-todo-form.component';
+import { DeleteTodoComponent } from '../dilogs/delete-todo/delete-todo.component';
 
 
 @Component({
@@ -8,13 +11,15 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
+  [x: string]: any;
+  constructor(public dilog:MatDialog){}
   ngOnInit(): void {
     let storedItems = localStorage.getItem('tasks');
     if(storedItems){
       this.taskList=JSON.parse(storedItems);
     }
   }
-  @ViewChild('task') task: ElementRef | undefined;
+  @ViewChild('taskInput') taskInput!: ElementRef<HTMLInputElement>;
   taskList:any[]=[];
   day=new Date();
   datepipe:DatePipe = new DatePipe('en-US');
@@ -25,12 +30,18 @@ export class MainComponent implements OnInit{
    * @param task 
    */
   AddToToDo(task:string){
+    this.taskInput.nativeElement.value = ''; 
+    if(task == '' || task == undefined){
+      // TBD
+    }
    const lists = {id:this.taskList.length,subject:task,Time:this.CurrentTime};
    this.taskList.push(lists);
    console.warn(this.taskList);
    localStorage.setItem('tasks',JSON.stringify(this.taskList));
    task= '';
   }
+
+
   /**
    * Individually removes the task
    * @param id 
@@ -38,6 +49,8 @@ export class MainComponent implements OnInit{
   RemoveItem(id:number){
     this.taskList = this.taskList.filter(item => item.id!==id);
   }
+
+
   /**
    * Clears the task 
    * 
@@ -46,4 +59,12 @@ export class MainComponent implements OnInit{
     localStorage.clear();
     this.taskList = [];
   } 
+
+  OpenDilog(){
+    this.dilog.open(AddTodoFormComponent);
+  }
+
+  DeleteTodo(){
+    this.dilog.open(DeleteTodoComponent)
+  }
 }

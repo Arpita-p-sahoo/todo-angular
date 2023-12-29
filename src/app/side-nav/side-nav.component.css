@@ -1,0 +1,23 @@
+.side-nav ul{
+    margin-top: 59px;
+    /* margin-bottom: 1rem; */
+    line-height: 4;
+    list-style: none;
+    text-align: -webkit-match-parent;
+}
+li {
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    color: white;
+    margin-bottom: 3rem;
+    border-radius: 45px;
+    text-align: center;
+}
+li:hover{
+    background-color: #fff;
+    color: #000;
+    transition: ease 0.5s;
+}
+li.btn{
+    padding: 1em 6em;
+}
