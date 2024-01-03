@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding: 5vh;">
     <form action="#" [formGroup]="AddTodoForm">
         <div class="form-row">
             <div class="input-data textarea">
@@ -11,12 +11,12 @@
         </div>
        <div class="text-center">
         <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Imporant</mat-radio-button>
+            <mat-radio-button #radioButton value="imp">Imporant</mat-radio-button>
             <mat-radio-button value="2">Work</mat-radio-button>
             <mat-radio-button value="2">Expence</mat-radio-button>
           </mat-radio-group>
           <br>
-          <button class="mt-4 mb-4" mat-raised-button color="Sucsses" (click)="saveTodo()">Save</button>
+          <button class="mt-4 mb-4" mat-raised-button color="Sucsses" (click)="saveTodo(radioButton)">Save</button>
        </div>
     </form>
 </div>
