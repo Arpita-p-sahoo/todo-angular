@@ -19,7 +19,7 @@ export class DashbordComponent implements OnInit {
       this.dataSvc.todoData=JSON.parse(storedItems);
     }
   }
-  edit(item:any){
+  edit(item:any){ 
     this.dilog.open(EditComponent,{
       data:item
     });    
