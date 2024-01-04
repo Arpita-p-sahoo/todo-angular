@@ -13,29 +13,23 @@ export class AddTodoFormComponent {
 
   // variables
   message: any;
-  @ViewChild('radioButton') radioButton!: MatRadioButton;
   constructor(public dataSvc: DataService, private dilog: MatDialog) { }
 
   AddTodoForm = new FormGroup({
-    id:new FormControl(this.dataSvc.todoData.length),
+    id: new FormControl(this.dataSvc.todoData.length),
     title: new FormControl('', [Validators.required]),
     tags: new FormControl('', [Validators.required])
   })
 
-  saveTodo(val:any) {
-   console.log(val._value);
-   
+  saveTodo() {
+    if (this.AddTodoForm.value.title == '') {
+      return;
+    }
+    const task = this.AddTodoForm.value;
+    this.dataSvc.todoData.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(this.dataSvc.todoData));
+    this.dilog.closeAll();
   }
-
-  //   if(this.AddTodoForm.value.title==''){
-  //     return;
-  //   }
-  //   const task = this.AddTodoForm.value;
-  //   this.dataSvc.todoData.push(task);
-  //   console.log(this.AddTodoForm.value);
-    
-  //   localStorage.setItem('tasks',JSON.stringify(this.dataSvc.todoData));
-  //   this.dilog.closeAll();
-  // }
-
 }
+

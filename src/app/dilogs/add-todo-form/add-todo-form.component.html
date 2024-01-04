@@ -10,13 +10,13 @@
             </div>
         </div>
        <div class="text-center">
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button #radioButton value="imp">Imporant</mat-radio-button>
-            <mat-radio-button value="2">Work</mat-radio-button>
-            <mat-radio-button value="2">Expence</mat-radio-button>
+        <mat-radio-group aria-label="Select an option" formControlName="tags">
+            <mat-radio-button value="important">Imporant</mat-radio-button>
+            <mat-radio-button value="Work">Work</mat-radio-button>
+            <mat-radio-button value="Expence">Expence</mat-radio-button>
           </mat-radio-group>
           <br>
-          <button class="mt-4 mb-4" mat-raised-button color="Sucsses" (click)="saveTodo(radioButton)">Save</button>
+          <button type="submit" class="mt-4 mb-4" mat-raised-button color="Sucsses" (click)="saveTodo()">Save</button>
        </div>
     </form>
 </div>
