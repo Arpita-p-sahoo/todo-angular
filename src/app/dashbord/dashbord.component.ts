@@ -9,7 +9,7 @@ import { EditComponent } from '../dilogs/edit/edit.component';
   styleUrls: ['./dashbord.component.css']
 })
 export class DashbordComponent implements OnInit {
-  
+  date = new Date();
   constructor(public dataSvc:DataService,private dilog:MatDialog){
 
   }

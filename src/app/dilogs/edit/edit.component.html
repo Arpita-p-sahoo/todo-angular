@@ -1,4 +1,6 @@
 <p>edit works!</p>
 <p> {{data.title}} </p>
-<input type="text" [value]="data.title" #updateddata>
+<form action="" [formGroup]="EditTodoForm">
+    <input type="text" [value]="data.title" #updateddata formControlName="title">
 <button (click)="updatedata(updateddata.value)">update</button>
+</form>
