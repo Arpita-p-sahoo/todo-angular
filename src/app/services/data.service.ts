@@ -10,4 +10,11 @@ export class DataService {
   todo_data:any='';
   // todoData :Array<Partial<{ id: number | null | undefined; title: string | null; tags: string | null; }>>=[];
   todoData:any[]=[];
+
+  xyz = {
+    title:'',
+    time:'',
+    tag:''
+  }
+
 }
