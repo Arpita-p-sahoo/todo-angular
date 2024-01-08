@@ -10,38 +10,25 @@ import { EditComponent } from '../dilogs/edit/edit.component';
 })
 export class DashbordComponent implements OnInit {
   date = new Date();
-  constructor(public dataSvc:DataService,private dilog:MatDialog){
+  constructor(public dataSvc: DataService, private dilog: MatDialog) {
 
   }
   ngOnInit(): void {
     let storedItems = localStorage.getItem('tasks');
-    if(storedItems){
-      this.dataSvc.todoData=JSON.parse(storedItems);
+    if (storedItems) {
+      this.dataSvc.todoData = JSON.parse(storedItems);
     }
   }
-  edit(item:any){ 
-    this.dilog.open(EditComponent,{
-      data:item
-    });    
-    
+  edit() {
+    this.dilog.open(EditComponent);
+
   }
-  RemoveItem(id:number){
+  RemoveItem(id: number) {
     const index = this.dataSvc.todoData.findIndex(item => item.id === id);
-  if (index !== -1) {
-    this.dataSvc.todoData.splice(index, 1);
-  } else {
-    console.log(`Item with ID ${id} not found.`);
+    if (index !== -1) {
+      this.dataSvc.todoData.splice(index, 1);
+    } else {
+      console.log(`Item with ID ${id} not found.`);
+    }
   }
-  }
-//   console.log(id);
-//   console.log(this.dataSvc.todoData);
-//   this.dataSvc.todoData = this.dataSvc.todoData.filter(item => {
-//     if (item.id !== null && item.id !== undefined) {
-//       return item.id !== id;
-//     }
-//     return true; // Keep items with null or undefined ids
-//   });
-//   console.log(this.dataSvc.todoData);
-// }
-  
 }

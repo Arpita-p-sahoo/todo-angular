@@ -1,7 +1,5 @@
 import { Component, Inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-edit',
@@ -10,17 +8,10 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EditComponent {
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dataSvc:DataService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  EditTodoForm = new FormGroup({
-    id: new FormControl(this.dataSvc.todoData.length),
-    title: new FormControl('', [Validators.required]),
-    tags: new FormControl('', [Validators.required])
-  })
   updatedata(val:any){
-    // send data to dashboard
-    console.log(val);
-    let editeddata = this.EditTodoForm.value;
-    this.dataSvc.todoData.push(editeddata);    
+    console.log(this.data);
+    
   }
 }
